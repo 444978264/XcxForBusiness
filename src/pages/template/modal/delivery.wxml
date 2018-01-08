@@ -1,0 +1,16 @@
+<template name="delivery">
+    <view hidden="{{!(temp_type=='delivery')}}">
+        <block wx:for='{{dataSource}}' wx:key="{{index}}" >
+            <view class="modal-item flex flex-row flex-center" data-idx="{{index}}" data-type="{{temp_type}}" bindtap="_selectRes">
+                <image style="width:40rpx;" mode="widthFix" src="{{index==deliveryIdx?'../../img/radio_fill.svg':'../../img/radio.svg'}}" />
+                <view class="flex-item font14" style="padding:0 20rpx;">
+                    <view>{{item.name}}--￥{{item.price}}</view>
+                    <view>{{item.description}}</view>
+                </view>
+            </view>
+            <view style="padding:20rpx 0;">
+                <view class="line"></view>
+            </view>
+        </block>
+    </view>
+</template>

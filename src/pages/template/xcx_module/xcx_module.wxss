@@ -1,0 +1,21 @@
+.xcx-module{
+    margin-bottom:20rpx;
+}
+.xcx-module-link{
+    height:auto;
+}
+.image-float-item{
+    width:100%;
+    display:block;
+}
+.goods-module{
+    padding:0 10rpx;
+}
+.goods-module .goods-img{
+    height:258.75rpx;
+}
+.module-goods-item{
+    width:50%;
+    padding:10rpx;
+    box-sizing:border-box;
+}

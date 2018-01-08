@@ -1,0 +1,29 @@
+.modal-layer{
+    position: fixed;
+    left: 0;
+    right:0 ;
+    bottom: 0;
+    top:0;
+    background:rgba(0,0,0,.6);
+    z-index:99;
+}
+.modal{
+    transition:all .5s ease;
+    transform: translateY(100%);
+    position: fixed !important;
+    bottom:0;
+    left:0;
+    width:100%;
+    box-sizing: border-box;
+    margin:0 !important;
+    opacity:0;
+    z-index:99;
+}
+.modal-in{
+    transform: translateY(0);
+    opacity:1
+}
+
+/* .modal-item{
+    padding:0 60rpx;
+} */

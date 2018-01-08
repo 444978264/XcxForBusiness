@@ -1,0 +1,5 @@
+<template name="empty">
+  <view class="nodata flex flex-center">
+    <image class="w100" src="../../img/empty_box.svg" mode="widthFix"></image>
+  </view>
+</template>

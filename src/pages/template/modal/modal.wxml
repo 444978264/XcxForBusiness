@@ -1,0 +1,12 @@
+<import src="./address.wxml" />
+<import src="./delivery.wxml" />
+<import src="./payment.wxml" />
+
+<template name="modal">
+    <view bindtap="_modalHide" hidden="{{!show_modal}}" class="modal-layer"></view>
+    <view class="container modal {{show_modal?'modal-in':''}}">
+        <template is="address" data="{{temp_type,dataSource,addressIdx}}"></template>
+        <template is="delivery" data="{{temp_type,dataSource,deliveryIdx}}"></template>
+        <template is="payment" data="{{temp_type,dataSource,paymentIdx}}"></template>
+    </view>
+</template>

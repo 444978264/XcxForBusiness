@@ -1,0 +1,79 @@
+<import src="../template/emptylist/emptylist.wxml" />
+<import src="../template/emptylist/no_more.wxml" />
+<import src="../template/modal/modal.wxml" />
+
+<view class="header cell-group flex flex-row font14 fc-theme">
+    <view bindtap="selectNav" data-active="{{index}}" data-status="{{item}}" wx:for="{{navs}}" wx:key="{{index}}" class="cell-item flex-item flex flex-center {{active==index?'cell-active':''}}">
+        <text>{{item}}</text>  
+    </view>
+</view>
+<view class="h50"></view>
+<wxs module="tools">
+    var dis = {
+        "1": "已发货",
+        "2": "部分发货"
+    }
+    function order_type(obj) {
+        if (obj['refund_count'] > 0) {
+            return "退款申请中";
+        } else if (obj['status'] == 5) {
+            return "订单已完成";
+        } else if (obj['status'] == 4) {
+            return "订单已作废";
+        } else if (obj['status'] == 6) {
+            return "订单已退款";
+        } else if (obj['status'] == 19) {
+            return "已支付,待退款";
+        } else if (obj['status'] == 18) {
+            return "已支付,待确认";
+        } else if (obj['distribution_status'] == 1 || obj['distribution_status'] == 2) {
+            return dis[obj['distribution_status']];
+        } else if (obj['pay_status'] == 1 && obj['status'] == 2) {
+            return "已付款,待发货";
+        } else if (obj['status'] == 1 && obj['pay_status'] == 0) {
+            return "待付款";
+        } else if (obj['status'] == 3) {
+            return '已取消'
+        }
+    }
+    module.exports.type = order_type;
+</wxs>
+<wxs src="../comm.wxs" module="comm" />
+<view wx:if="{{list.length}}">
+    <view wx:for="{{list}}" wx:key="{{index}}" class="cell-group flex font14 fc-theme">
+        <view class="flex-item cell-item flex flex-row flex-between weight600">
+            <text>订单号#{{item.order_no}}</text>
+            <text>{{tools.type(item)}}</text>
+        </view>
+        <view class="line"></view>
+        <view wx:for="{{item._goods}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}" class="flex-item cell-item flex flex-row flex-left flex-top">
+            <image class="w90 margin-right10" mode="widthFix"  src="{{comm.imgUrl(val.img)}}" />
+            <view class="flex-item">
+                <text class="warp-hide">{{val.name_s}}</text>
+                <text></text>
+            </view>
+            <view class="w80 flex text-right">
+                <text>￥{{val.real_price_s}}</text>
+                <text>x{{val.goods_num_s}}</text>
+            </view>
+        </view>
+        <view class="flex-item cell-item flex flex-row flex-between">
+            <text></text>
+            <text class="font12">共{{item.goods_sum}}件商品 合计:￥<text class="font16 weight">{{item.order_amount}}</text>(含运费￥{{item.real_freight}})</text>
+        </view>
+        <view class="line"></view>
+        <view class="flex-item cell-item flex flex-row flex-align flex-between weight600">
+            <view>
+                <button data-no="{{item.order_no}}" data-idx="{{index}}" data-id="{{item.oid}}" bindtap="cancel" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">取消订单</button>
+            </view>
+            <view class="flex flex-row flex-center">
+                <button bindtap="_selectSource" data-type="payment" data-oid="{{item.oid}}" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">立即支付</button>
+                <button data-id="{{item.oid}}" data-idx="{{index}}" bindtap="confirm" class="font12 btn" wx:if="{{item.status==2&&item.distribution_status==1}}" type="default" size="mini" plain hover-class="hover-class">确认收货</button>
+                <navigator class="font12 padding0-10" url="/pages/order_detail/order_detail?id={{item.oid}}" navigate hover-class="hover-class">详情</navigator>
+            </view>
+        </view>
+    </view>
+    <template is="nomore" data="{{has_next}}"></template>
+</view>
+<template wx:else is="empty"></template>
+<template is="modal" data="{{show_modal,temp_type,dataSource,paymentIdx}}"></template>

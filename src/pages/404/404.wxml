@@ -1,0 +1,10 @@
+  <view class='flex-item flex flex-center'>
+    <icon type="warn" size='{{iconSize||80}}' />
+    <view class='no_location_tip' style='display:flex'>
+      <!--<image src="{{icon}}" style='width:20px;height:20px;'></image>-->
+      <text class='font_14'> {{title}} </text>
+    </view>
+    <button type="primary" size="mini" plain="{{true}}" bindtap="btnDefault">
+      {{btnInfo}}
+    </button>
+  </view>

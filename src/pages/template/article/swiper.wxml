@@ -1,0 +1,12 @@
+<wxs src="../../comm.wxs" module="comm" />
+<template name="swiper">
+    <view class="temp_swiper">
+        <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" circular>
+        <block wx:for="{{photo}}" wx:key="{{index}}">
+            <swiper-item class="swiper-item flex">
+                <image style="width:100%" mode="widthFix" src="{{comm.imgUrl(item.img)}}" class="slide-image flex-item"/>
+            </swiper-item>
+        </block>
+        </swiper>
+    </view>
+</template>    

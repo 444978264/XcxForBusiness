@@ -1,0 +1,113 @@
+/* 垂直水平居中 */
+    /* ----容器属性 */
+    .g_center{
+        text-align: center;
+        font-size:0;
+    }
+    .g_center::after{
+        content:'';
+        height:100%;
+        width:0;
+        display:inline-block;
+        vertical-align: middle;
+    }
+    /* ----item属性 */
+    .g_center_item{
+        vertical-align: middle;
+        display:inline-block;
+        font-size:1rem;
+    }
+/* 定位居中 */
+    .absolute{
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
+    }
+/* 清楚浮动 */
+    /* ----容器属性 */
+        /* 兼容IE */
+    .clearfix{ zoom:1;}
+    .clearfix::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    /* ----item属性 */
+    .left{
+        float:left;
+        height:100%;
+    }
+    .right{
+        float:right;
+        height:100%;
+    }
+/* 文本属性 */
+    /* ----位置*/
+    .text-center{
+        text-align: center;
+    }
+    .text-left{
+        text-align: left;
+    }
+    .text-right{
+        text-align: right;
+    }
+    .g_text-center{
+        text-align: center !important;
+    }
+    .g_text-left{
+        text-align: left !important;
+    }
+    .g_text-right{
+        text-align: right !important;
+    }
+    /* 字体大小 */
+    .font-small{
+        font-size: 12px;
+    }
+    .font-normal{
+        font-size: 14px;
+    }
+    .font-middle{
+        font-size: 16px;
+    }
+    .font-large{
+        font-size: 20px;
+    }
+    /* ----颜色*/
+    .color-red{
+        color:#f64d52;
+    }
+    .color-green{
+        color:#a7ba9a;
+    }
+    .color-gray{
+        color:#b1b1b1;
+    }
+/* 文本溢出 */
+    /* ----换行 */
+    .warp{
+        word-wrap: break-word;  
+        word-break: normal;  
+    }
+    /* ----多行溢出隐藏 */
+    .warp-hide{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    /* ----单行不换行并隐藏显示... */
+    .nowarp{
+        width:100%;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+/* 显示隐藏 */
+    .hide{
+        display:none;
+    }
+    .show{
+        display:block;
+    }

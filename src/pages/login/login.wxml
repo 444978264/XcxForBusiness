@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.head_ico}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickname}}</text>
+  </view>
+  <view class="usermotto text-center">
+    <form bindsubmit="$sendFormId" report-submit>
+      <button form-type="submit" type="primary" size="mini" disabled="{{disabled}}" bindtap="defaultTap" hover-class="defaultTap">{{motto}}</button>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+//var host = "https://saas.yunruikj.com"//http://192.168.199.141/mall/
+var host = "http://www.lastmall.com";
+
+var page = '/pages/products/products'
+
+var reg = getRegExp("^(https|http|ftp|rtsp|mms)");
+function imgUrl(url) {
+    if (reg.test(url)) {
+        return url
+    } else if (url[0] == '/') {
+        return host + url
+    } else {
+        return host + '/' + url
+    }
+}
+function linkTo(url) {
+    var path = '';
+    if(reg.test(url)){
+        return url
+    }else{
+        var regProp = getRegExp("[&|\?]((?!controller|action).)*=([^&?]*)", 'g');  
+        path = url.match(regProp);
+        if(path&&"Array" === path.constructor && path.length){
+            path = path.join('');
+            if (path[0] == "&") {
+                 path = page + '?' + path.substring(1)
+            }
+        }else{
+            path = page
+        }
+        return path
+    }
+}
+
+function parse(data){
+    return typeof data == "string" ?JSON.parse(data):data
+}
+function parseNum(data){
+    return +data
+}
+
+module.exports.parse = parse
+module.exports.imgUrl = imgUrl
+module.exports.link = linkTo

@@ -1,0 +1,6 @@
+<template name="img">
+    <view class="temp_img">
+        <image style="width:100%" mode="widthFix" src="{{src}}" />
+        <text>{{content}}</text>    
+    </view>
+</template>

@@ -1,0 +1,24 @@
+<template name="address">
+    <view hidden="{{!(temp_type=='address')}}">
+        <block wx:for='{{dataSource}}' wx:key="{{index}}" >
+            <view class="modal-item flex flex-row flex-center" data-idx="{{index}}" data-type="{{temp_type}}" bindtap="_selectRes">
+                <image style="width:40rpx;" mode="widthFix" src="{{index==addressIdx?'../../img/radio_fill.svg':'../../img/radio.svg'}}" />
+                <view class="flex-item font14" style="padding:0 20rpx;">
+                    <view>
+                        <text>收货人：{{item.accept_name}}</text>
+                        <text>{{item.mobile}}</text>
+                    </view>
+                    <view>{{item.province_name+item.city_name+item.area_name+item.address}}</view>
+                </view>
+                <image data-id="{{item.id}}" style="width:60rpx;" mode="widthFix" src="../../img/edit.svg" catchtap="_edit"/>
+            </view>
+            <view style="padding:20rpx 0;">
+                <view class="line"></view>
+            </view>
+        </block>
+        <view class="modal-item flex flex-row flex-center" bindtap="_add" >
+            <image style="width:70rpx;" mode="widthFix" src="../../img/add.svg" />
+            <text class="font16">添加新地址</text>
+        </view>
+    </view>
+</template>

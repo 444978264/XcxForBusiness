@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/orders/orders",
+    "pages/setting/setting",
+    "pages/login/login",
+    "pages/404/404"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#373737",
+    "navigationBarTitleText": "云锐商家",
+    "navigationBarTextStyle": "#fff",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./img/index.png",
+        "selectedIconPath": "./img/index.active.png"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单",
+        "iconPath": "./img/catorage.png",
+        "selectedIconPath": "./img/catorage.active.png"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "预约",
+        "iconPath": "./img/user.png",
+        "selectedIconPath": "./img/user.active.png"
+      }
+    ],
+    "position": "bottom",
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#373737",
+    "color": "#808080"
+  },
+  "debug": true
+}

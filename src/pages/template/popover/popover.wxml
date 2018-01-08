@@ -1,0 +1,31 @@
+<template name="popover">
+  <view class="g_popover">
+    <view class="g_mark"></view>
+    <view class="g_popover-container text-center">
+        <view class="g_popover_content">
+            <view class="g_popover_header">
+                <image style="width:50rpx;" mode="widthFix" src="../../img/cup.svg" />
+                <text class="g_popover_title">{{text}}</text>  
+            </view>
+            <scroll-view scroll-y class="scroll-view">
+                <view class="scroll-view-item" wx:for="{{sourceOfPop}}" wx:key="index">
+                   <view class="scroll-view-item-info">
+                    <span style="width:46rpx;color:#d2d2d2;flex:1">{{index+1}}</span>
+                    <image class="g_avatar" mode="widthFix" src="{{item.head_ico}}" />
+                    <view class="g_info">
+                        <text>{{item.nickname}}</text>
+                        <text style="font-size:24rpx;color:#d2d2d2">{{type=="rich"?"发了":"收了"}}{{item.countx}}个红包</text>
+                    </view>
+                   </view>
+                   <view class="total_amount">
+                      <span>￥{{item.total_amount}}</span>
+                   </view>
+                </view>
+            </scroll-view> 
+        </view>
+        <view class="g_popover_footer">
+            <image style="width:120rpx" bindtap="_removePop" mode="widthFix" src="../../img/delete.svg"/>
+        </view>
+    </view>
+  </view>
+</template>

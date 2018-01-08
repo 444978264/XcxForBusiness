@@ -1,0 +1,12 @@
+<template name="payment">
+    <view hidden="{{!(temp_type=='payment')}}">
+        <block wx:for='{{dataSource}}' wx:key="{{index}}" >
+            <view class="modal-item flex flex-row flex-center padding5-0" data-idx="{{index}}" data-type="{{temp_type}}" bindtap="_selectRes">
+                <text>{{item.name}}</text>
+            </view>
+            <view class="line-container">
+                <view class="line"></view>
+            </view>
+        </block>
+    </view>
+</template>

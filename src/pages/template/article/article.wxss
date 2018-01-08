@@ -1,0 +1,17 @@
+.temp_img{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.temp_swiper{
+    /* display:flex; */
+    width:100%;
+}
+.swiper{
+    flex-grow:1;
+    height:562.5rpx;
+}
+/* .swiper-item{
+    flex:1;
+    height:auto !important;
+} */

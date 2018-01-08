@@ -1,0 +1,15 @@
+page{
+  display:flex;
+}
+
+
+.no_location_tip{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60rpx;
+}
+.font_14{
+  font-size:28rpx;
+  color:#d2d2d2;
+}

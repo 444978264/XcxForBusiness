@@ -1,0 +1,127 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.6.6",
+	"appid": "wxa2d336cf09441184",
+	"projectname": "%E4%BA%91%E9%94%90%E5%95%86%E5%9F%8E",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 1,
+					"name": "zxx",
+					"pathName": "pages/category/category",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/goods_detail/goods_detail",
+					"query": "id=19",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order_submit/order_submit",
+					"query": "type='product'&id=87&num=1"
+				},
+				{
+					"id": 5,
+					"name": "订单详情",
+					"pathName": "pages/order_detail/order_detail",
+					"query": "id=196"
+				},
+				{
+					"id": -1,
+					"name": "申请退款",
+					"pathName": "pages/refund_edit/refund_edit",
+					"query": "id=196"
+				},
+				{
+					"id": -1,
+					"name": "申请退款",
+					"pathName": "pages/refunds/refunds",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "退详情",
+					"pathName": "pages/refund_detail/refund_detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/usercenter/usercenter",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单列表",
+					"pathName": "pages/orders/orders",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "地址",
+					"pathName": "pages/address_list/address_list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "代金券",
+					"pathName": "pages/chits/chits",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": 13,
+					"name": "手机绑定",
+					"pathName": "pages/bind_mobile/bind_mobile",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "404",
+					"pathName": "pages/404/404",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "setting",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": "1008"
+				}
+			]
+		}
+	}
+}

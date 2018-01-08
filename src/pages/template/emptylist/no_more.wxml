@@ -1,0 +1,8 @@
+<template name="nomore">
+    <view wx:if="{{has_next}}" class=" padding10 text-center ">
+        <image class="icon20 loading" mode="widthFix" src="../../img/loading.svg" />
+    </view>
+    <view wx:else class="font12 padding10 text-center c-grey">
+        <text>-------下面没有了-------</text>
+    </view>
+</template>

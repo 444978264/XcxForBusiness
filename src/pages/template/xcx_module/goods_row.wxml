@@ -1,0 +1,16 @@
+<wxs src="../../comm.wxs" module="comm" />
+<template name="goods-row">
+    <view class="goods-module flex flex-row flex-wrap">
+        <navigator class="flex-item" url="/pages/goods_detail/goods_detail?id={{item.id}}" hover-class="hover-class" class="module-goods-item" wx:for="{{_xcxSource}}" wx:key="{{index}}">
+            <view>
+                <view style="background:#fff;">
+                <image class="goods-img" mode="aspectFit" lazy-load="{{true}}" src="{{comm.imgUrl(item.img)}}" />
+                <view class="goods-info">
+                    <text class="goods-title">{{item.name}}</text>
+                    <text class="goods-price">￥{{item.group_price}}<text class="goods-sale">{{item.sale}}人付款</text></text>      
+                </view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</template>       

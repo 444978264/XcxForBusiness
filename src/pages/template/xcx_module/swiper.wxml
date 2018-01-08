@@ -1,0 +1,14 @@
+<wxs src="../../comm.wxs" module="comm" />
+<template name="swiper">
+    <block wx:for="{{swiper}}" wx:key="{{index}}">
+    <view class="temp_swiper xcx-module">
+        <swiper class="swiper" style="height:{{swiperHeight}}rpx" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" circular>
+            <swiper-item class="swiper-item" wx:for="{{item.img}}" wx:key="{{idx}}" wx:for-item="val" wx:for-index="idx">
+                <navigator url="{{comm.link(val.link)}}" navigate hover-class="hover-class">
+                    <image style="width:100%" mode="widthFix" data-id="{{index}}" bindload="imgLoad" src="{{val.url}}" class="slide-image"/>
+                </navigator>
+            </swiper-item>
+        </swiper>
+    </view>
+    </block>
+</template>    

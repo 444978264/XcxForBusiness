@@ -1,0 +1,13 @@
+<wxs src="../../comm.wxs" module="comm" />
+
+<template name="goods">
+    <view bindtap="_getDetail" data-id="{{ id }}" class="goods-item {{'waterfall-id'+ id }}" style="left:{{left}};top:{{top}};opacity:{{opacity||0}}">
+        <view style="background:#fff;">
+        <image class="goods-img" mode="widthFix" data-id="{{ id }}" data-parent="{{'waterfall-id'+ id }}" bindload="_imgLoad" lazy-load="{{true}}" src="{{comm.imgUrl(img)}}" />
+        <view class="goods-info">
+            <text class="goods-title">{{name}}</text>
+            <text class="goods-price">￥{{group_price}}<text class="goods-sale">{{sale}}人付款</text></text>      
+        </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,8 @@
+<wxs src="../../comm.wxs" module="comm" />
+<template name="image-row">
+    <view class="image-float flex flex-row">
+        <navigator class="xcx-module-link flex-item" url="{{comm.link(item.link)}}" navigate hover-class="hover-class" wx:for="{{img}}" wx:key="{{index}}">
+            <image class="image-float-item" mode="widthFix" src="{{item.url}}" />
+        </navigator>
+    </view>
+</template>  
