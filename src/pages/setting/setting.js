@@ -21,14 +21,4 @@ extend({
             }
         })
     },
-    onShow() {
-        this.$http.balance().then(res => {
-            if (!res) return
-            if (res.g_info.mobile) {
-                this.setData({
-                    mobile: res.g_info.mobile
-                })
-            }
-        })
-    }
 });

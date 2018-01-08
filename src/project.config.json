@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
 	"appid": "wxa2d336cf09441184",
-	"projectname": "%E4%BA%91%E9%94%90%E5%95%86%E5%9F%8E",
+	"projectname": "%E5%95%86%E5%AE%B6%E7%AB%AF",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 16,
 			"list": [
 				{
 					"id": 1,
@@ -120,6 +120,17 @@
 					"pathName": "pages/setting/setting",
 					"query": "",
 					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "商家端",
+					"pathName": "pages/orders/orders",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商家端index",
+					"pathName": "pages/index/index"
 				}
 			]
 		}

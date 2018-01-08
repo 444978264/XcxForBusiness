@@ -8,53 +8,69 @@
     </view>
 </view>
 <view class="h50"></view>
-<wxs module="tools">
-    var dis = {
-        "1": "已发货",
-        "2": "部分发货"
-    }
-    function order_type(obj) {
-        if (obj['refund_count'] > 0) {
-            return "退款申请中";
-        } else if (obj['status'] == 5) {
-            return "订单已完成";
-        } else if (obj['status'] == 4) {
-            return "订单已作废";
-        } else if (obj['status'] == 6) {
-            return "订单已退款";
-        } else if (obj['status'] == 19) {
-            return "已支付,待退款";
-        } else if (obj['status'] == 18) {
-            return "已支付,待确认";
-        } else if (obj['distribution_status'] == 1 || obj['distribution_status'] == 2) {
-            return dis[obj['distribution_status']];
-        } else if (obj['pay_status'] == 1 && obj['status'] == 2) {
-            return "已付款,待发货";
-        } else if (obj['status'] == 1 && obj['pay_status'] == 0) {
-            return "待付款";
-        } else if (obj['status'] == 3) {
-            return '已取消'
-        }
-    }
-    module.exports.type = order_type;
-</wxs>
 <wxs src="../comm.wxs" module="comm" />
 <view wx:if="{{list.length}}">
+    <view wx:for="{{list}}" wx:key="{{index}}" class="cell-group flex flex-row font12 fc-theme">
+        <view class="w80 cell-item flex flex-align">
+            <image class="w60 radius" mode="widthFix"  src="{{item.user.head_ico}}" />
+            <view class="padding10-0 nowarp text-center">
+                <text>{{item.user.nickname}}</text>
+            </view>
+        </view>
+        <view class="cell-item flex-item">
+            <view class="flex flex-row flex-between">
+                <text>{{item.order_no}}</text>
+                <text>{{item.create_time}}</text>
+            </view>
+            <view class="padding10-0">
+                <text>{{item.order_status_name}}</text>
+            </view>
+            <view>
+                <text class="fc-gray">商品明细</text>
+                <view class="flex-item flex flex-row flex-wrap">
+                    <view hidden="{{idx>2}}" class="padding5-0 padding-right10 border-box " style="width:{{100/3}}%" wx:for="{{item.items}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}">
+                        <image class="wauto" mode="widthFix"  src="{{comm.imgUrl(val.img)}}" />
+                    </view>
+                    <view hidden="{{item.items.length<3}}" class="text-center wauto">
+                        <text>...</text>
+                    </view>
+                </view>
+            </view>
+            <view class="flex-item cell-item flex flex-row flex-align flex-between weight600">
+                <view>
+                </view>
+                <view class="flex flex-row flex-center">
+                    <button data-id="{{item.oid}}" data-idx="{{index}}" bindtap="confirm" class="font12 btn" wx:if="{{item.pay_status==1&&item.distribution_status==0}}" type="default" size="mini" plain hover-class="hover-class">确认发货</button>
+                    <navigator class="font12 padding0-10" url="/pages/order_detail/order_detail?id={{item.oid}}" navigate hover-class="hover-class">详情</navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="nomore" data="{{has_next}}"></template>
+</view>
+<template wx:else is="empty"></template>
+<template is="modal" data="{{show_modal,temp_type,dataSource,paymentIdx}}"></template>
+
+
+
+
+<!-- 没用的 -->
+<view wx:if="{{false}}">
     <view wx:for="{{list}}" wx:key="{{index}}" class="cell-group flex font14 fc-theme">
         <view class="flex-item cell-item flex flex-row flex-between weight600">
             <text>订单号#{{item.order_no}}</text>
-            <text>{{tools.type(item)}}</text>
+            <text>{{item.order_status_name}}</text>
         </view>
         <view class="line"></view>
-        <view wx:for="{{item._goods}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}" class="flex-item cell-item flex flex-row flex-left flex-top">
+        <view wx:for="{{item.items}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}" class="flex-item cell-item flex flex-row flex-left flex-top">
             <image class="w90 margin-right10" mode="widthFix"  src="{{comm.imgUrl(val.img)}}" />
             <view class="flex-item">
-                <text class="warp-hide">{{val.name_s}}</text>
+                <text class="warp-hide">{{val.name_value}}</text>
                 <text></text>
             </view>
             <view class="w80 flex text-right">
-                <text>￥{{val.real_price_s}}</text>
-                <text>x{{val.goods_num_s}}</text>
+                <text>￥{{val.real_price}}</text>
+                <text>x{{val.goods_nums}}</text>
             </view>
         </view>
         <view class="flex-item cell-item flex flex-row flex-between">
@@ -64,16 +80,13 @@
         <view class="line"></view>
         <view class="flex-item cell-item flex flex-row flex-align flex-between weight600">
             <view>
-                <button data-no="{{item.order_no}}" data-idx="{{index}}" data-id="{{item.oid}}" bindtap="cancel" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">取消订单</button>
             </view>
             <view class="flex flex-row flex-center">
-                <button bindtap="_selectSource" data-type="payment" data-oid="{{item.oid}}" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">立即支付</button>
-                <button data-id="{{item.oid}}" data-idx="{{index}}" bindtap="confirm" class="font12 btn" wx:if="{{item.status==2&&item.distribution_status==1}}" type="default" size="mini" plain hover-class="hover-class">确认收货</button>
+                <button data-id="{{item.oid}}" data-idx="{{index}}" bindtap="confirm" class="font12 btn" wx:if="{{item.status==1&&item.distribution_status==0}}" type="default" size="mini" plain hover-class="hover-class">确认发货</button>
                 <navigator class="font12 padding0-10" url="/pages/order_detail/order_detail?id={{item.oid}}" navigate hover-class="hover-class">详情</navigator>
             </view>
         </view>
     </view>
     <template is="nomore" data="{{has_next}}"></template>
 </view>
-<template wx:else is="empty"></template>
-<template is="modal" data="{{show_modal,temp_type,dataSource,paymentIdx}}"></template>
+

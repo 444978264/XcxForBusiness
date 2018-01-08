@@ -1,15 +1,14 @@
 // test.js
 import extend from '../../libs/extends.js';
-import _ from '../../libs/deepcopy';
-import { modal } from '../template/template'
-let init = _.extend(true, {
+
+extend( {
     $openRefresh() {
         this.paramsInit();
         return true
     },
     data: {
         list: [],
-        navs: ['全部', '待付款', '待发货', '待收货', '已完成'],
+        navs: ['全部', '待付款', '待发货'],
         active: 0,
     },
     page: 1,
@@ -36,23 +35,6 @@ let init = _.extend(true, {
             this.has_next = res.has_next;
             this.page++;
             let { list } = this.data;
-            res.rows.forEach(function (elem) {
-                elem.goods_id_s = elem.goods_id_s.split(',');
-                elem.img_s = elem.img_s.split(',');
-                elem.name_s = elem.name_s.split(',');
-                elem.real_price_s = elem.real_price_s.split(',');
-                elem.goods_num_s = elem.goods_num_s.split(',');
-                elem._goods = [];
-                for (let i = 0; i < elem.goods_num_s.length; i++) {
-                    elem._goods.push({
-                        img: elem.img_s[i],
-                        goods_id_s: elem.goods_id_s[i],
-                        name_s: elem.name_s[i],
-                        real_price_s: elem.real_price_s[i],
-                        goods_num_s: elem.goods_num_s[i],
-                    })
-                }
-            })
             list = list.concat(res.rows);
             this.setData({
                 list,
@@ -75,17 +57,6 @@ let init = _.extend(true, {
                 this.order_status = {
                     pay: 1,
                     dist: 0
-                }
-                break
-            case '待收货':
-                this.order_status = {
-                    pay: 1,
-                    dist: 1
-                }
-                break
-            case '已完成':
-                this.order_status = {
-                    status: 5
                 }
                 break
             default:
@@ -140,12 +111,8 @@ let init = _.extend(true, {
         })
         this.fetch();
     },
-    onShow() {
-        this._getPayments();
-    },
     onReachBottom() {
         if (!this.has_next) return;
         this.fetch()
     }
-}, modal)
-extend(init);
+});

@@ -147,7 +147,20 @@ const host = dev ? config.local : config.host;
   //订单详情
   export const ordDetail = (params,config)=>ajax(getUrl("iorder","get_one"), params, config)
   // 订单列表
-  export const orderLst = (params,config)=>ajax(getUrl("iorder","lst"), params, config)
+  export const orderLst = (params,config)=>ajax(getUrl("xorder","lst"), params, config)
+  // 业绩
+  export const performance = (params,config)=>ajax(getUrl("xreport","sell_top"), params, config)
+  // 会员总数统计和活跃数
+  export const members = (params,config)=>ajax(getUrl("xreport","member_total"), params, config)
+  // 业绩
+  export const trendOfWeak = (params,config)=>ajax(getUrl("xreport","member_trend"), params, config)
+  // // 业绩
+  // export const performance = (params,config)=>ajax(getUrl("xreport","sell_top"), params, config)
+  // // 业绩
+  // export const performance = (params,config)=>ajax(getUrl("xreport","sell_top"), params, config)
+  // // 业绩
+  // export const performance = (params,config)=>ajax(getUrl("xreport","sell_top"), params, config)
+
 /* export default */
   export default {
     TOKEN,
@@ -159,5 +172,8 @@ const host = dev ? config.local : config.host;
     //接口
     formid,
     orderLst,
-    login
+    login,
+    performance,
+    members,
+    trendOfWeak
   }

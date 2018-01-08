@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/orders/orders",
     "pages/setting/setting",
     "pages/login/login",
@@ -8,7 +9,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#373737",
-    "navigationBarTitleText": "云锐商家",
+    "navigationBarTitleText": "商家端",
     "navigationBarTextStyle": "#fff",
     "backgroundColor": "#eeeeee",
     "enablePullDownRefresh": true
@@ -30,6 +31,12 @@
       {
         "pagePath": "pages/orders/orders",
         "text": "预约",
+        "iconPath": "./img/user.png",
+        "selectedIconPath": "./img/user.active.png"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "设置",
         "iconPath": "./img/user.png",
         "selectedIconPath": "./img/user.active.png"
       }

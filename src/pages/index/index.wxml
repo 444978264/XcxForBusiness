@@ -1,0 +1,25 @@
+<view class="container flex flex-row flex-between font14 flex-align">
+    <view class="shadow-border radius3 flex flex-row flex-between" style="overflow:hidden">
+        <view class="padding5 active" style="background:#373737;color:#fff;" data-type="today">
+            <text>今日</text>
+        </view>
+        <view class="padding5" data-type="month">
+            <text>本月</text>
+        </view>
+    </view>
+    <image mode="widthFix" class="icon20" src="../../img/message.svg" />
+</view>
+<view class="flex flex-center">
+    <view class="container font14 flex flex-row flex-between shadow-border radius5" style="width:60%;" wx:for="{{list}}" wx:key="{{index}}">
+        <view>
+            <text>{{item.true_name}}</text>
+        </view>
+        <view class="line-column"></view>
+        <view>
+            <text>今日成交 ￥{{item.true_name}}</text>
+        </view>
+    </view>
+</view>
+<view class="container flex flex-center">
+    <canvas class="flex-item" canvas-id="chart"></canvas>
+</view>

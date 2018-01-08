@@ -1,0 +1,8 @@
+page{
+    background:#fff;
+}
+.line-column{
+    width:2rpx;
+    height:100%;
+    background:#373737;
+}
