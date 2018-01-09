@@ -1,3 +1,3 @@
-const dev = true;
+const dev = false;
 
 export default dev

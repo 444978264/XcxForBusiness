@@ -4,9 +4,15 @@
     <image class="userinfo-avatar" src="{{userInfo.head_ico}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickname}}</text>
   </view>
+  <view>
+    <label class="flex flex-row flex-center font14">
+        <text>公司编码：</text>
+        <input class="text-center w60" style="border-bottom:1px solid #efefef" type="text" placeholder="请输入公司编码" focus value="{{sxs_id}}" bindinput="setVal" />
+    </label>
+  </view>
   <view class="usermotto text-center">
     <form bindsubmit="$sendFormId" report-submit>
-      <button form-type="submit" type="primary" size="mini" disabled="{{disabled}}" bindtap="defaultTap" hover-class="defaultTap">{{motto}}</button>
+      <button form-type="submit" type="primary" size="mini" disabled="{{disabled}}" bindtap="init" hover-class="defaultTap">{{motto}}</button>
     </form>
   </view>
 </view>

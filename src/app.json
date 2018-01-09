@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/orders/orders",
     "pages/setting/setting",
-    "pages/login/login",
     "pages/404/404"
   ],
   "window": {
@@ -27,18 +27,6 @@
         "text": "订单",
         "iconPath": "./img/catorage.png",
         "selectedIconPath": "./img/catorage.active.png"
-      },
-      {
-        "pagePath": "pages/orders/orders",
-        "text": "预约",
-        "iconPath": "./img/user.png",
-        "selectedIconPath": "./img/user.active.png"
-      },
-      {
-        "pagePath": "pages/setting/setting",
-        "text": "设置",
-        "iconPath": "./img/user.png",
-        "selectedIconPath": "./img/user.active.png"
       }
     ],
     "position": "bottom",

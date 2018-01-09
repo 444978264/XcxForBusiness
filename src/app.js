@@ -21,6 +21,7 @@ App({
       fail && fail(err);
     })
   },
+  loading: false,
   login(fn) {
     this.checkLogin((code, { encryptedData, iv }) => {
       let params = {
@@ -28,8 +29,14 @@ App({
         encryptedData,
         iv,
       };
+      if (this.loading) return
+      this.loading = true;
       //更新数据
-      login(params).then(res => {
+      wx.showNavigationBarLoading() //在标题栏中显示加载
+      login(params).then((res) => {
+        wx.hideNavigationBarLoading(); //完成停止加载
+        this.loading = false;
+        if (!res) return
         setToken(res.token);
         setItemSync("userid", res.userid);
         setItemSync("token", res.token);
@@ -53,7 +60,7 @@ App({
     }
   },
   getUserInfo(code, cb) {
-     _wxUserInfo().then(res => {
+    _wxUserInfo().then(res => {
       if (!res) {
         router.redirect('404', {
           from: 'login',

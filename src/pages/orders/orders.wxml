@@ -23,25 +23,26 @@
                 <text>{{item.create_time}}</text>
             </view>
             <view class="padding10-0">
-                <text>{{item.order_status_name}}</text>
+                <text class="fc-green">{{item.order_status_name}}</text>
             </view>
             <view>
                 <text class="fc-gray">商品明细</text>
                 <view class="flex-item flex flex-row flex-wrap">
-                    <view hidden="{{idx>2}}" class="padding5-0 padding-right10 border-box " style="width:{{100/3}}%" wx:for="{{item.items}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}">
+                    <view hidden="{{idx>2&&!item.show}}" class="padding5-0 padding-right10 border-box " style="width:{{100/3}}%" wx:for="{{item.items}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}">
                         <image class="wauto" mode="widthFix"  src="{{comm.imgUrl(val.img)}}" />
                     </view>
-                    <view hidden="{{item.items.length<3}}" class="text-center wauto">
-                        <text>...</text>
+                    <view hidden="{{item.show||item.items.length<3}}" class="text-center wauto shadow-border" data-idx="{{index}}" bindtap="showAll">
+                        <image class="icon20" src="../../img/expand.svg" mode="widthFix"/>
                     </view>
                 </view>
             </view>
+            <view class="padding5"></view>
             <view class="flex-item cell-item flex flex-row flex-align flex-between weight600">
                 <view>
                 </view>
                 <view class="flex flex-row flex-center">
                     <button data-id="{{item.oid}}" data-idx="{{index}}" bindtap="confirm" class="font12 btn" wx:if="{{item.pay_status==1&&item.distribution_status==0}}" type="default" size="mini" plain hover-class="hover-class">确认发货</button>
-                    <navigator class="font12 padding0-10" url="/pages/order_detail/order_detail?id={{item.oid}}" navigate hover-class="hover-class">详情</navigator>
+                    <!--<navigator class="font12 padding0-10" url="/pages/order_detail/order_detail?id={{item.oid}}" navigate hover-class="hover-class">详情</navigator>-->
                 </view>
             </view>
         </view>
@@ -50,9 +51,6 @@
 </view>
 <template wx:else is="empty"></template>
 <template is="modal" data="{{show_modal,temp_type,dataSource,paymentIdx}}"></template>
-
-
-
 
 <!-- 没用的 -->
 <view wx:if="{{false}}">

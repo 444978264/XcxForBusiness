@@ -1,5 +1,5 @@
-//var host = "https://saas.yunruikj.com"//http://192.168.199.141/mall/
-var host = "http://www.lastmall.com";
+var host = "https://saas.yunruikj.com"//http://192.168.199.141/mall/
+//var host = "http://www.lastmall.com";
 
 var page = '/pages/products/products'
 

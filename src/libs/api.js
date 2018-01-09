@@ -4,7 +4,7 @@ import Factory from './promise_factory';
 import config from '../config/config';
 import dev from '../is_develop';
 export let TOKEN = getItemSync('token');
-
+export let SXSID = '';
 const INFO = getItemSync('localInfo') || {};
 const host = dev ? config.local : config.host;
 /* 新建百度地图对象 */
@@ -23,8 +23,9 @@ const host = dev ? config.local : config.host;
       });
     }
   }
-/*设置全局token*/
+/*设置全局token&sxs_id*/
   export const setToken = token => TOKEN = token;
+  export const setSxsID = sxs_id => SXSID = sxs_id;
 /*新的fetch---Promise封装2017-12-25*/
   let collections = [];
   let lock = false;
@@ -40,7 +41,7 @@ const host = dev ? config.local : config.host;
         },
         data: {
           token: TOKEN,
-          sxs_id:'c1',
+          sxs_id:SXSID,
           ...params
         },
         success: res => {
@@ -101,7 +102,7 @@ const host = dev ? config.local : config.host;
   }
 /*获取接口地址*/
   export const getUrl = (c, a) => {
-    return `${host}/index.php/${c}/${a}`
+    return `${host}/adm.php/${c}/${a}`
   }
 /* 获取图片地址 */
   export const getImg = path => {
@@ -165,6 +166,7 @@ const host = dev ? config.local : config.host;
 /* export default */
   export default {
     TOKEN,
+    setSxsID,
     setToken,
     uploadUrl,
     uploadImg,

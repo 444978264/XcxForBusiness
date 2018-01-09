@@ -9,6 +9,7 @@
     </view>
     <image mode="widthFix" class="icon20" src="../../img/message.svg" />
 </view>
+
 <view class="flex flex-center">
     <view class="container font14 flex flex-row flex-between shadow-border radius5" style="width:60%;" wx:for="{{list}}" wx:key="{{index}}">
         <view>
@@ -30,3 +31,4 @@
     <view class="line-container"></view>
     <canvas class="flex-item" canvas-id="chart"></canvas>
 </view>
+

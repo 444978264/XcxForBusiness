@@ -6,24 +6,24 @@ extend({
    * 页面的初始数据
    */
   data: {
-    motto: '进入',
+    motto: '登录',
     userInfo: {},
-    disabled: true
+    disabled: false,
+    sxs_id: 'c1'
   },
   loading: false,
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  inp_val:'c1',
+  setVal({ detail ,...other}) {
+    this.inp_val = detail.value;
+    this.$http.setSxsID(this.inp_val);
+    return detail.value
+  },
   init() {
-    if (this.loading) return;
     this.$loading.start({
       title: '正在登录中...'
     })
-    this.loading = true;
-    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.setItemSync('sxs_id',this.inp_val)
     $app.login(userInfo => {
-      this.loading = false;
-      wx.hideNavigationBarLoading() //完成停止加载
       //更新数据
       this.setData({
         userInfo: userInfo,
@@ -42,7 +42,17 @@ extend({
   /**
    * 生命周期函数--监听页面显示
    */
+  onLoad(){
+    
+  },
   onShow: function () {
-    this.init();
+    let token = this.getItemSync('token');
+    let id = this.getItemSync('sxs_id');
+    if(token&&id){
+      this.$http.setSxsID(id);
+      this.init();
+    }else{
+      this.$http.setSxsID(this.inp_val);
+    }
   }
 })

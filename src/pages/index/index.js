@@ -8,7 +8,7 @@ extend({
     },
     data: {
         list: [],
-        current: 'today'
+        current: 'today',
     },
     page: 1,
     page: 20,
@@ -84,7 +84,6 @@ extend({
         this.$http.members().then(res => {
             if (!res) return
             console.log(res)
-
             new wxCharts({
                 canvasId: 'chart2',
                 width: w * 0.85,
@@ -105,8 +104,10 @@ extend({
             })
         })
     },
-    onShow() {
+    onLoad(){
         this.fetch();
+    },
+    onShow() {
         this.getTrend();
         this.getMembers();
     }

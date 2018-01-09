@@ -1,7 +1,7 @@
 // test.js
 import extend from '../../libs/extends.js';
 
-extend( {
+extend({
     $openRefresh() {
         this.paramsInit();
         return true
@@ -17,6 +17,7 @@ extend( {
     loading: false,
     paramsInit() {
         this.page = 1;
+        this.loading = false;
         this.has_next = true;
         let list = [];
         this.setData({ list })
@@ -38,10 +39,17 @@ extend( {
             list = list.concat(res.rows);
             this.setData({
                 list,
-                has_next:res.has_next
+                has_next: res.has_next
             })
             console.log(res)
         })
+    },
+    showAll(e) {
+        let { idx } = this.dataset(e);
+        let { list } = this.data;
+        console.log(idx,list)
+        list[idx].show = true;
+        this.setData({ list })
     },
     selectNav(e) {
         if (this.loading) return
@@ -98,7 +106,7 @@ extend( {
         })
     },
     onLoad({ pay, dist, type }) {
-        if(pay>=0&&dist>=0){
+        if (pay >= 0 && dist >= 0) {
             this.order_status = {
                 pay,
                 dist
