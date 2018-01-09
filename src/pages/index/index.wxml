@@ -1,9 +1,9 @@
 <view class="container flex flex-row flex-between font14 flex-align">
     <view class="shadow-border radius3 flex flex-row flex-between" style="overflow:hidden">
-        <view class="padding5 active" style="background:#373737;color:#fff;" data-type="today">
+        <view class="padding5 {{current=='today'?'active':''}}" data-type="today" bindtap="getSource">
             <text>今日</text>
         </view>
-        <view class="padding5" data-type="month">
+        <view class="padding5 {{current=='month'?'active':''}}" data-type="month"  bindtap="getSource">
             <text>本月</text>
         </view>
     </view>
@@ -16,10 +16,17 @@
         </view>
         <view class="line-column"></view>
         <view>
-            <text>今日成交 ￥{{item.true_name}}</text>
+            <text>{{current=='today'?'今日':'本月'}}成交 ￥{{item.total_money}}</text>
         </view>
     </view>
 </view>
 <view class="container flex flex-center">
+    <text class="font14">今日会员活跃度</text>
+    <view class="line-container"></view>
+    <canvas class="flex-item" canvas-id="chart2"></canvas>
+</view>
+<view class="container flex flex-center">
+    <text class="font14">本周会员注册走势</text>
+    <view class="line-container"></view>
     <canvas class="flex-item" canvas-id="chart"></canvas>
 </view>

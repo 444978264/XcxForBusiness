@@ -93,7 +93,8 @@ const host = dev ? config.local : config.host;
         return false
       }
       if (res.simple_client && typeof res.result == 'object') {
-        res.result.g_info = res.simple_client;
+        setItemSync('g_info',res.simple_client)
+        // res.result.g_info = res.simple_client;
       }
       return res.result
     }).catch(err => console.log(err, url, 'fail'))

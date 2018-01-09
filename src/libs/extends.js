@@ -5,13 +5,14 @@ import _ from './deepcopy';
 import shareConfig from '../config/share.config';
 import config_audio, { recorderManager, innerAudioContext, needImport } from "./config_audio";
 import './polyfill'
-
-console.log(wxApi)
+// 设备信息
+const _system = wx.getSystemInfoSync();
 
 var config = {
     data: {
         has_next: true
     },
+    _system,
     // 通用方法
     ...options,
 
