@@ -27,9 +27,9 @@
         <view class="cell-item flex flex-row flex-between flex-align font14" bindtap="clearStorage">
             <view class="flex flex-row flex-center">
                 <image class="icon15 margin-right10" mode="widthFix" src="../../img/clear.svg"/>
-                <text class="c-grey">清楚缓存</text>                   
+                <text class="c-grey">注销</text>                   
             </view>
-             <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+            <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
         </view>
     </view>
 </view>
